@@ -5,7 +5,9 @@ class InfoEntry extends Component {
 constructor(props) {
     super(props)
     this.props = props;
+    this.submitFunction = this.props.submitFunction;
   } 
+
 render(){
 return (
     <div className="cv-form-div">
@@ -18,7 +20,7 @@ return (
         <input type="text" id="email"></input>
         <label htmlFor="phone">Phone Number:</label>
         <input type="text" id="phone"></input>
-        <input type="button" id="infoSubmitButton" onClick={this.props.submitFunction}></input>
+        <input type="button" id="infoSubmitButton" onClick={this.submitFunction}></input>
       </legend>
     </div>
     );
