@@ -20,7 +20,7 @@ return (
         <input type="text" id="email"></input>
         <label htmlFor="phone">Phone Number:</label>
         <input type="text" id="phone"></input>
-        <input type="button" id="infoSubmitButton" onClick={this.submitFunction}></input>
+        <button id="infoSubmitButton" onClick={this.submitFunction}>Submit Info</button>
       </legend>
     </div>
     );
