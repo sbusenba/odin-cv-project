@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import InfoEntry from './components/InfoEntry';
+import InfoEdit from './components/InfoEdit'
 import SchoolEntry from './components/SchoolEntry'
 import SchoolEdit from './components/SchoolEdit'
-import InfoEdit from './components/InfoEdit'
 import { Component } from 'react';
 
 class App extends Component {
@@ -44,7 +44,8 @@ class App extends Component {
     let schoolInfo = Array.from(this.state.schoolInfo);
     schoolInfo.push({school: school.value,degree: degree.value, startDate: startDate.value, endDate:endDate.value})
     this.setState({schoolInfo})
-    this.setState({phase:3})
+    /* temporarily set phase to display schooledit*/
+    this.setState({phase:5})
   }
   getAnotherSchool = ()=>{
     let school = document.getElementById('school') ;
