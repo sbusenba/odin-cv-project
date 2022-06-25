@@ -61,7 +61,16 @@ class App extends Component {
   editSchool = (schoolInfo) => {
     this.setState({schoolInfo})
   }
-
+  getJob= ()=>{
+    let job = document.getElementById('job-input').value
+    let title = document.getElementById('title-input').value
+    let start = document.getElementById('start-input').value
+    let end = document.getElementById('end-input').value
+    let jobInfo = Array.from(this.state.schoolInfo);
+    jobInfo.push({school: school.value,degree: degree.value, startDate: startDate.value, endDate:endDate.value})
+    this.setState({jobInfo})
+ 
+  }
   render(){
   return (
     <div className="App">
