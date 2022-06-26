@@ -4,6 +4,7 @@ import InfoEntry from './components/InfoEntry';
 import InfoEdit from './components/InfoEdit'
 import SchoolEntry from './components/SchoolEntry'
 import SchoolEdit from './components/SchoolEdit'
+import WorkEntry from './components/WorkEntry';
 import { Component } from 'react';
 
 class App extends Component {
@@ -45,7 +46,7 @@ class App extends Component {
     schoolInfo.push({school: school.value,degree: degree.value, startDate: startDate.value, endDate:endDate.value})
     this.setState({schoolInfo})
     /* temporarily set phase to display schooledit*/
-    this.setState({phase:5})
+    this.setState({phase:2})
   }
   getAnotherSchool = ()=>{
     let school = document.getElementById('school') ;
@@ -55,6 +56,12 @@ class App extends Component {
     let schoolInfo = Array.from(this.state.schoolInfo);
     schoolInfo.push({school: school.value,degree: degree.value, startDate: startDate.value, endDate:endDate.value})
     this.setState({schoolInfo})
+    school.value = null;
+    degree.value = null;
+    startDate.value = null;
+    endDate.value = null;
+
+
   }
 
 
@@ -64,12 +71,25 @@ class App extends Component {
   getJob= ()=>{
     let job = document.getElementById('job-input').value
     let title = document.getElementById('title-input').value
-    let start = document.getElementById('start-input').value
-    let end = document.getElementById('end-input').value
-    let jobInfo = Array.from(this.state.schoolInfo);
-    jobInfo.push({school: school.value,degree: degree.value, startDate: startDate.value, endDate:endDate.value})
+    let startDate = document.getElementById('start-input').value
+    let endDate = document.getElementById('end-input').value
+    let jobInfo = Array.from(this.state.jobInfo);
+    jobInfo.push({job: job,title: title, startDate: startDate, endDate:endDate})
     this.setState({jobInfo})
- 
+    this.setState({phase:3})
+  }
+  getAnotherJob= ()=>{
+    let job = document.getElementById('job-input')
+    let title = document.getElementById('title-input')
+    let startDate = document.getElementById('start-input')
+    let endDate = document.getElementById('end-input')
+    let jobInfo = Array.from(this.state.jobInfo);
+    jobInfo.push({job: job.value,title: title.value, startDate: startDate.value, endDate:endDate.value})
+    this.setState({jobInfo})
+    job.value = null;
+    title.value = null;
+    startDate.value = null;
+    endDate.value = null;
   }
   render(){
   return (
@@ -78,11 +98,11 @@ class App extends Component {
         <img src={logo} className="App-logo" alt="logo" />
     
         
-          {(this.state.phase === 0)? <InfoEntry submitFunction={this.getInfo}/>: ''}
-          {(this.state.phase === 1)? <SchoolEntry addAnotherFunction ={this.getAnotherSchool} submitFunction={this.getSchool} schools={this.state.schoolInfo}/>: ''}
-          
+          {(this.state.phase === 0)? <InfoEntry submitFunction={this.getInfo}/>: null}
+          {(this.state.phase === 1)? <SchoolEntry addAnotherFunction ={this.getAnotherSchool} submitFunction={this.getSchool} schools={this.state.schoolInfo}/>: null}
+          {(this.state.phase === 2)? <WorkEntry addAnotherFunction ={this.getAnotherJob} submitFunction = {this.getJob}/>: null}
           {(this.state.phase === 4)? <InfoEdit submitFunction={this.editInfo} info = {this.state.info}/>:''}
-          {(this.state.phase === 5)? <SchoolEdit submitFunction = {this.editSchool} schools = {this.state.schoolInfo}/>:''}
+          {(this.state.phase === 5)? <SchoolEdit submitFunction = {this.editSchool} schools = {this.state.schoolInfo}/>:null}
           
       </header>
     </div>
