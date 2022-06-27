@@ -5,6 +5,7 @@ import InfoEdit from './components/InfoEdit'
 import SchoolEntry from './components/SchoolEntry'
 import SchoolEdit from './components/SchoolEdit'
 import WorkEntry from './components/WorkEntry';
+import CVViewer from './components/CVViewer';
 import { Component } from 'react';
 
 class App extends Component {
@@ -74,7 +75,7 @@ class App extends Component {
     let startDate = document.getElementById('start-input').value
     let endDate = document.getElementById('end-input').value
     let jobInfo = Array.from(this.state.jobInfo);
-    jobInfo.push({job: job,title: title, startDate: startDate, endDate:endDate})
+    jobInfo.push({company: job,title: title, startDate: startDate, endDate:endDate})
     this.setState({jobInfo})
     this.setState({phase:3})
   }
@@ -84,7 +85,7 @@ class App extends Component {
     let startDate = document.getElementById('start-input')
     let endDate = document.getElementById('end-input')
     let jobInfo = Array.from(this.state.jobInfo);
-    jobInfo.push({job: job.value,title: title.value, startDate: startDate.value, endDate:endDate.value})
+    jobInfo.push({company: job.value,title: title.value, startDate: startDate.value, endDate:endDate.value})
     this.setState({jobInfo})
     job.value = null;
     title.value = null;
@@ -101,6 +102,7 @@ class App extends Component {
           {(this.state.phase === 0)? <InfoEntry submitFunction={this.getInfo}/>: null}
           {(this.state.phase === 1)? <SchoolEntry addAnotherFunction ={this.getAnotherSchool} submitFunction={this.getSchool} schools={this.state.schoolInfo}/>: null}
           {(this.state.phase === 2)? <WorkEntry addAnotherFunction ={this.getAnotherJob} submitFunction = {this.getJob}/>: null}
+          {(this.state.phase === 3)? <CVViewer parentState={this.state}/> : null }
           {(this.state.phase === 4)? <InfoEdit submitFunction={this.editInfo} info = {this.state.info}/>:''}
           {(this.state.phase === 5)? <SchoolEdit submitFunction = {this.editSchool} schools = {this.state.schoolInfo}/>:null}
           
