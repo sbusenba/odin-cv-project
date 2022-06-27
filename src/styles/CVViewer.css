@@ -1,0 +1,31 @@
+.school-view, .job-view {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:1rem;
+}
+
+.cv-view{
+    background-color: antiquewhite;
+    color:black;
+    text-align:left;
+}
+.school-text>h4,.school-view p {
+    margin-block-end: 0rem;
+    margin-block-start:0rem;
+}
+.job-text>h4,.job-view p {
+    margin-block-end: 0rem;
+    margin-block-start:0rem;
+}
+.personal-info {
+    display:flex;
+    flex-direction:column;
+    align-items: flex-end;
+    padding:1rem;
+}
+.personal-info p, .personal-info h3 {
+    text-align: right;
+    margin-block-end: 0rem;
+    margin-block-start:0rem;
+}
