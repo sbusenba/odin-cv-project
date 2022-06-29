@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import InfoEntry from './components/InfoEntry';
 import InfoEdit from './components/InfoEdit'
@@ -68,6 +68,7 @@ class App extends Component {
 
   editSchool = (schoolInfo) => {
     this.setState({schoolInfo})
+    this.setState({phase:3})
   }
   getJob= ()=>{
     let job = document.getElementById('job-input').value
@@ -92,11 +93,12 @@ class App extends Component {
     startDate.value = null;
     endDate.value = null;
   }
+
   render(){
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
     
         
           {(this.state.phase === 0)? <InfoEntry submitFunction={this.getInfo}/>: null}

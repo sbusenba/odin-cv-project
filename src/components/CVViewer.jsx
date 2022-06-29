@@ -23,13 +23,19 @@ render(){
                 </div>
             </div>
             <div className="education">
+            <div className="header">  
                 <h3>Education</h3>
+                <button>edit</button>
+                </div>  
                 {this.schoolInfo.map((school)=><SchoolView 
                 key={school.school+school.endDate} 
                 school={school}/>)}
             </div>
             <div className="experience">
+                <div className="header">  
                 <h3>Experience</h3>
+                <button>edit</button>
+                </div>  
                 {this.jobInfo.map((job)=><JobView 
                 key={job.company+job.endDate} job={job}/>)}
             </div>
