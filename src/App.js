@@ -5,6 +5,7 @@ import InfoEdit from './components/InfoEdit'
 import SchoolEntry from './components/SchoolEntry'
 import SchoolEdit from './components/SchoolEdit'
 import WorkEntry from './components/WorkEntry';
+import WorkEdit from './components/WorkEdit'
 import CVViewer from './components/CVViewer';
 import { Component } from 'react';
 
@@ -70,6 +71,10 @@ class App extends Component {
     this.setState({schoolInfo})
     this.setState({phase:3})
   }
+  editWork = (jobInfo)=>{
+    this.setState({jobInfo});
+    this.setState({phase:3})
+  }
   getJob= ()=>{
     let job = document.getElementById('job-input').value
     let title = document.getElementById('title-input').value
@@ -93,22 +98,23 @@ class App extends Component {
     startDate.value = null;
     endDate.value = null;
   }
+  setPhase=(newState)=>{
+    console.log(newState)
+    this.setState({phase:newState})
+  }
 
   render(){
   return (
     <div className="App">
       <header className="App-header">
-        
-    
-        
           {(this.state.phase === 0)? <InfoEntry submitFunction={this.getInfo}/>: null}
           {(this.state.phase === 1)? <SchoolEntry addAnotherFunction ={this.getAnotherSchool} submitFunction={this.getSchool} schools={this.state.schoolInfo}/>: null}
           {(this.state.phase === 2)? <WorkEntry addAnotherFunction ={this.getAnotherJob} submitFunction = {this.getJob}/>: null}
-          {(this.state.phase === 3)? <CVViewer parentState={this.state}/> : null }
+          {(this.state.phase === 3)? <CVViewer parentState={this.state} setPhase={this.setPhase}/> : null }
           {(this.state.phase === 4)? <InfoEdit submitFunction={this.editInfo} info = {this.state.info}/>:''}
           {(this.state.phase === 5)? <SchoolEdit submitFunction = {this.editSchool} schools = {this.state.schoolInfo}/>:null}
-          
-      </header>
+          {(this.state.phase === 6)? <WorkEdit submitFunction = {this.editWork} workInfo = {this.state.jobInfo}/>:null}
+      </header> 
     </div>
   );
   }
